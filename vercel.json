@@ -53,10 +53,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "app/api/health.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
