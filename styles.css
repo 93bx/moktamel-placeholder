@@ -11,6 +11,24 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+    direction: rtl;
+}
+
+[dir="rtl"] body {
+    font-family: 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+[dir="rtl"] .features {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
 }
 
 .container {
@@ -90,6 +108,46 @@ body {
     }
 }
 
+/* Language Toggle */
+.language-toggle {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+[dir="rtl"] .language-toggle {
+    right: auto;
+    left: 2rem;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.lang-btn.active {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 /* Content styles */
 .content {
     position: relative;
@@ -102,6 +160,32 @@ body {
 .logo {
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: logoFloat 3s ease-in-out infinite;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .logo-text {
@@ -336,6 +420,21 @@ body {
         padding: 1rem;
     }
     
+    .language-toggle {
+        top: 1rem;
+        right: 1rem;
+    }
+    
+    [dir="rtl"] .language-toggle {
+        right: auto;
+        left: 1rem;
+    }
+    
+    .logo-image {
+        width: 100px;
+        height: 100px;
+    }
+    
     .logo-text {
         font-size: 3rem;
     }
@@ -369,6 +468,11 @@ body {
 }
 
 @media (max-width: 480px) {
+    .logo-image {
+        width: 80px;
+        height: 80px;
+    }
+    
     .logo-text {
         font-size: 2.5rem;
     }
@@ -388,6 +492,15 @@ body {
     
     .floating-shape {
         display: none;
+    }
+    
+    .language-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        justify-content: center;
+        margin-bottom: 2rem;
     }
 }
 

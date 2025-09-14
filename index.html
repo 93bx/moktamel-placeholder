@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moktamel - Coming Soon</title>
-    <meta name="description" content="Moktamel website is coming soon. Stay tuned for something amazing!">
+    <title>مكتمل - قريباً</title>
+    <meta name="description" content="موقع مكتمل قريباً. ترقبوا شيئاً مذهلاً!">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -19,37 +20,43 @@
         </div>
         
         <div class="content">
+            <div class="language-toggle">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="ar">عربي</button>
+            </div>
+            
             <div class="logo">
-                <h1 class="logo-text">Moktamel</h1>
+                <img src="logo.png" alt="Moktamel Logo" class="logo-image">
+                <h1 class="logo-text">مكتمل</h1>
                 <div class="logo-underline"></div>
             </div>
             
             <div class="main-content">
-                <h2 class="coming-soon">Coming Soon</h2>
-                <p class="description">
-                    We're working hard to bring you something amazing. 
-                    Stay tuned for updates!
+                <h2 class="coming-soon" data-en="Coming Soon" data-ar="قريباً">قريباً</h2>
+                <p class="description" data-en="We're working hard to bring you something amazing. Stay tuned for updates!" data-ar="نعمل بجد لنقدم لكم شيئاً مذهلاً. ترقبوا التحديثات!">
+                    نعمل بجد لنقدم لكم شيئاً مذهلاً. 
+                    ترقبوا التحديثات!
                 </p>
                 
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress-fill"></div>
                     </div>
-                    <span class="progress-text">Development in Progress</span>
+                    <span class="progress-text" data-en="Development in Progress" data-ar="التطوير قيد التقدم">التطوير قيد التقدم</span>
                 </div>
                 
                 <div class="features">
                     <div class="feature-item">
                         <div class="feature-icon">🚀</div>
-                        <span>Innovation</span>
+                        <span data-en="Innovation" data-ar="الابتكار">الابتكار</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">✨</div>
-                        <span>Excellence</span>
+                        <span data-en="Excellence" data-ar="التميز">التميز</span>
                     </div>
                     <div class="feature-item">
                         <div class="feature-icon">🎯</div>
-                        <span>Precision</span>
+                        <span data-en="Precision" data-ar="الدقة">الدقة</span>
                     </div>
                 </div>
             </div>
@@ -75,7 +82,7 @@
                         </svg>
                     </a>
                 </div>
-                <p class="copyright">&copy; 2024 Moktamel. All rights reserved.</p>
+                <p class="copyright" data-en="&copy; 2024 Moktamel. All rights reserved." data-ar="&copy; 2024 مكتمل. جميع الحقوق محفوظة.">&copy; 2024 مكتمل. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </div>

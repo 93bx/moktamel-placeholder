@@ -1,5 +1,57 @@
 // Smooth scrolling and interactive elements
 document.addEventListener('DOMContentLoaded', function() {
+    // Language toggle functionality
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const htmlElement = document.documentElement;
+    const elementsWithData = document.querySelectorAll('[data-en], [data-ar]');
+    
+    // Set initial language from localStorage or default to Arabic
+    let currentLang = localStorage.getItem('selectedLanguage') || 'ar';
+    updateLanguage(currentLang);
+    
+    // Add click event listeners to language buttons
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedLang = this.getAttribute('data-lang');
+            updateLanguage(selectedLang);
+            localStorage.setItem('selectedLanguage', selectedLang);
+        });
+    });
+    
+    function updateLanguage(lang) {
+        // Update HTML dir attribute for RTL support
+        if (lang === 'ar') {
+            htmlElement.setAttribute('dir', 'rtl');
+            htmlElement.setAttribute('lang', 'ar');
+        } else {
+            htmlElement.setAttribute('dir', 'ltr');
+            htmlElement.setAttribute('lang', 'en');
+        }
+        
+        // Update button states
+        langButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Update text content
+        elementsWithData.forEach(element => {
+            const text = element.getAttribute(`data-${lang}`);
+            if (text) {
+                element.textContent = text;
+            }
+        });
+        
+        // Update page title
+        if (lang === 'ar') {
+            document.title = 'مكتمل - قريباً';
+        } else {
+            document.title = 'Moktamel - Coming Soon';
+        }
+    }
+    
     // Add mouse movement parallax effect to floating shapes
     const shapes = document.querySelectorAll('.floating-shape');
     const container = document.querySelector('.container');
@@ -71,13 +123,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const progressText = document.querySelector('.progress-text');
     
     // Simulate realistic progress updates
-    const progressMessages = [
-        'Development in Progress',
-        'Building Core Features',
-        'Optimizing Performance',
-        'Final Testing Phase',
-        'Almost Ready!'
-    ];
+    const progressMessages = {
+        en: [
+            'Development in Progress',
+            'Building Core Features',
+            'Optimizing Performance',
+            'Final Testing Phase',
+            'Almost Ready!'
+        ],
+        ar: [
+            'التطوير قيد التقدم',
+            'بناء الميزات الأساسية',
+            'تحسين الأداء',
+            'مرحلة الاختبار النهائية',
+            'تقريباً جاهز!'
+        ]
+    };
     
     let currentProgress = 0;
     let currentMessageIndex = 0;
@@ -88,9 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
             progressFill.style.width = `${Math.min(currentProgress, 75)}%`;
             
             // Update message occasionally
-            if (Math.random() < 0.1 && currentMessageIndex < progressMessages.length - 1) {
+            if (Math.random() < 0.1 && currentMessageIndex < progressMessages[currentLang].length - 1) {
                 currentMessageIndex++;
-                progressText.textContent = progressMessages[currentMessageIndex];
+                progressText.textContent = progressMessages[currentLang][currentMessageIndex];
             }
             
             setTimeout(updateProgress, 200 + Math.random() * 300);
@@ -102,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add typing effect to the description
     const description = document.querySelector('.description');
-    const originalText = description.textContent;
+    let originalText = description.textContent;
     description.textContent = '';
     
     let charIndex = 0;
@@ -114,8 +175,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
+    // Update typing effect when language changes
+    function updateTypingEffect() {
+        originalText = description.textContent;
+        description.textContent = '';
+        charIndex = 0;
+        setTimeout(typeWriter, 100);
+    }
+    
     // Start typing effect after logo animation
     setTimeout(typeWriter, 1500);
+    
+    // Add typing effect update to language change
+    const originalUpdateLanguage = updateLanguage;
+    updateLanguage = function(lang) {
+        originalUpdateLanguage(lang);
+        currentLang = lang;
+        setTimeout(updateTypingEffect, 100);
+    };
     
     // Add scroll-triggered animations
     const observerOptions = {
