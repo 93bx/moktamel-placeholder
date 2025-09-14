@@ -1,0 +1,31 @@
+{
+  "name": "moktamel-placeholder",
+  "version": "1.0.0",
+  "description": "Coming soon placeholder page for Moktamel website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build step required'",
+    "start": "npx serve .",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "coming-soon",
+    "placeholder",
+    "website",
+    "moktamel"
+  ],
+  "author": "Moktamel Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/moktamel-placeholder.git"
+  },
+  "homepage": "https://moktamel-placeholder.vercel.app"
+}
