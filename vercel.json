@@ -1,6 +1,9 @@
 {
   "version": 2,
   "name": "moktamel-placeholder",
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "installCommand": "",
   "rewrites": [
     {
       "source": "/((?!styles\\.css|script\\.js|logo\\.png).*)",
